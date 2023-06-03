@@ -215,93 +215,10 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'style': '{',
-    'formatters': {
-        'debug': {
-            'bug': '{asctime} {levelname} {message}'
-        },
-        'info': {
-            'inf': '{asctime} {levelname} {module} {message}'
-        },
-        'warning': {
-            'wrng': '{asctime} {levelname} {message} {pathname}'
-        },
-        'e_c': {
-            'err_cr': '{asctime} {levelname} {message} {pathname} {exc_info}'
-        },
-    },
-
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
-        },
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue'
-        },
-        'err': {
-            'level': 'ERROR',
-        },
-        'cr': {
-            'level': 'CRITICAL'
-        },
-    },
-
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'debug'
-        },
-
-        'console_w': {
-            'level': 'WARNING',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'warning'
-        },
-
-        'console_ec': {
-            'level': 'ERROR',
-            'filters': ['require_debug_true', 'err', 'cr'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'e_c'
-        },
-
-        'general': {
-            'level': 'INFO',
-            'filters': ['require_debug_false'],
-            'class': 'logging.FileHandler',
-            'filename': 'general.log',
-            'formatter': 'info',
-        },
-
-        'error': {
-            'level': 'ERROR',
-            'filters': ['err', 'cr'],
-            'class': 'logging.FileHandler',
-            'filename': 'error.log',
-            'formatter': 'e_c',
-        },
-
-        'security': {
-            'level': 'INFO',
-            'filters': ['err', 'cr', 'require_debug_false'],
-            'class': 'logging.FileHandler',
-            'filename': 'security.log',
-            'formatter': 'info'
-        },
-
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-
 
     'loggers': {
         'django': {
-            'handlers': ['general'],
+            'handlers': ['news_paper'],
             'level': 'INFO',
         },
 
@@ -334,5 +251,88 @@ LOGGING = {
             'level': 'INFO',
             'formatter': 'info',
         }
-    }
+    },
+
+    'formatters': {
+        'debug': {
+            'bug': '{asctime} {levelname} {message}'
+        },
+        'info': {
+            'inf': '{asctime} {levelname} {module} {message}'
+        },
+        'warning': {
+            'wrng': '{asctime} {levelname} {message} {pathname}'
+        },
+        'e_c': {
+            'err_cr': '{asctime} {levelname} {message} {pathname} {exc_info}'
+        },
+    },
+
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue'
+        },
+        'err': {
+            'level': 'ERROR',
+        },
+        'cr': {
+            'level': 'CRITICAL'
+        },
+    },
+
+    'handlers': {
+        'news_paper': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'logging.FileHandler',
+            'filename': 'general.log',
+            'formatter': 'info'
+        },
+
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'debug'
+        },
+
+        'console_w': {
+            'level': 'WARNING',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'warning'
+        },
+
+        'console_ec': {
+            'level': 'ERROR',
+            'filters': ['require_debug_true', 'err', 'cr'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'e_c'
+        },
+
+        'error': {
+            'level': 'ERROR',
+            'filters': ['err', 'cr'],
+            'class': 'logging.FileHandler',
+            'filename': 'error.log',
+            'formatter': 'e_c',
+        },
+
+        'security': {
+            'level': 'INFO',
+            'filters': ['err', 'cr', 'require_debug_false'],
+            'class': 'logging.FileHandler',
+            'filename': 'security.log',
+            'formatter': 'info'
+        },
+
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
 }
