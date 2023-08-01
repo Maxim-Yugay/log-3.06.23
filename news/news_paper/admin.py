@@ -1,5 +1,6 @@
 from django.contrib import admin
 # from django.contrib.gis.gdal import field
+from modeltranslation.admin import TranslationAdmin
 
 from .models import *
 
@@ -14,9 +15,3 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('dateCreation', 'categoryType')
     actions = [nullfy_rating]
 
-
-
-admin.site.register(Author)
-admin.site.register(Post, PostAdmin)
-admin.site.register(Comment)
-admin.site.register(Category)

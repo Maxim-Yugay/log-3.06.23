@@ -30,12 +30,12 @@
 {% if post %}
     <table>
         <tr>
-            <td>Заголовок</td>
-            <td>Текст</td>
-            <td>Дата</td>
+            <td>Title</td>
+            <td>Text</td>
+            <td>Date</td>
 
             {% if perms.news_paper.change_post or perm.news_paper.delete_post %}
-            <td>Действия</td>
+            <td>Actions</td>
 
             {% endif %}
         </tr>
@@ -58,7 +58,7 @@
         {% endfor %}
     </table>
 {% else %}
-    <td>Нет публикаций</td>
+    <td>No publications</td>
 {% endif %}
 
 {% endcache %}

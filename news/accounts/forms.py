@@ -1,17 +1,17 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User, Group
+from django.core.mail import EmailMultiAlternatives
 from allauth.account.forms import SignupForm
-from django.core.mail import EmailMultiAlternatives, mail_managers, mail_admins, send_mail
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(label = 'Email')
-    first_name = forms.CharField(label = 'Имя')
-    last_name = forms.CharField(label= 'Фамилия')
+    email = forms.EmailField(label='Email')
+    first_name = forms.CharField(label='Имя')
+    last_name = forms.CharField(label='Фамилия')
 
     class Meta:
-        model= User
+        model = User
         fields = (
             'username',
             'first_name',

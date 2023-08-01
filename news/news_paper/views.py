@@ -1,13 +1,19 @@
+import pytz
+from django.http import HttpResponse
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django_filters import FilterSet, DateFilter
-from django.forms import DateTimeInput
 from django.contrib.auth.decorators import login_required
 from django.db.models import Exists, OuterRef
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.core.cache import cache
+from django.utils import timezone
+from django.utils.translation import activate, get_supported_language_variant
+from django.utils.translation import gettext as _
+from rest_framework import serializers
 
 from .models import *
 from .filters import PostFilter
@@ -26,7 +32,7 @@ class AuthorList(ListView):
 class PostList(ListView):
     model = Post
     context_object_name = 'post'
-    paginate_by = 10
+    paginate_by = 1
 
     def get_queryset(self):
         queryset = super().get_queryset()

@@ -4,9 +4,9 @@ from django.forms import DateTimeInput
 
 class PostFilter(FilterSet):
     added_after = DateTimeFilter(
-        field_name= 'dateCreation',
+        field_name='dateCreation',
         lookup_expr='gt',
-        widget = DateTimeInput(
+        widget=DateTimeInput(
             format='%Y-%m-%dT%H:%M',
             attrs={'type':'datetime-local'},
 
