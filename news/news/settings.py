@@ -272,18 +272,21 @@ LOGGING = {
             'level': 'INFO',
             'formatter': 'genlog',
             'filename': 'general.log',
+            'class': 'logging.FileHandler',
         },
         'err': {
             'filters': ['debug_true'],
             'level': ['ERROR', 'CRITICAL'],
             'formatter': 'console_w',
             'filename': 'errors.log',
+            'class': 'logging.FileHandler',
         },
         'sec': {
             'filters': ['debug_true'],
             'level': ['WARNING', 'ERROR'],
             'formatter': 'genlog',
-            'filename': 'security.log'
+            'filename': 'security.log',
+            'class': 'logging.FileHandler',
         },
         'mail': {
             'filters': ['debug_false'],
